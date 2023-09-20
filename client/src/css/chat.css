@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    margin: auto;
+    height: 100vh;
+    width: 70vw;
+    background-image: url("https://e1.pxfuel.com/desktop-wallpaper/461/478/desktop-wallpaper-whatsapp-dark-whatsapp-chat-thumbnail.jpg");
+}
+
+.header {
+    height: 10vh;
+}
+
+.chatBox {
+    height: 80vh;
+}
+
+.input-container {
+    height: 9vh;
+}
+
+.input-container input {
+    height: 100%;
+    width: 90%;
+    font-size: 1rem;
+    border: none;
+    padding: 0 10px;
+}
+
+.input-container button {
+    cursor: pointer;
+    height: 100%;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
+
+.chatBox {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+}
+
+.chatBox::-webkit-scrollbar {
+    display: none;
+}
+
+.flex-r {
+    display: flex;
+    justify-content: right;
+}
+.flex-l {
+    display: flex;
+    justify-content: left;
+}
+
+.msgDivRight,
+.msgDivLeft {
+    background-color: rgb(23, 117, 23);
+    padding: 5px 1rem;
+    margin: 0.5rem;
+    border-radius: 10px;
+    float: right;
+    clear: both;
+}
+
+.msgDivLeft{
+    background-color: rgb(49, 153, 49);
+}
+
+.msgDivRight p:first-child,
+.msgDivLeft p:first-child {
+    font-size: 1rem;
+    color: #b5b5b5;
+}
+
+.msgDivRight p:last-child,
+.msgDivLeft p:last-child {
+    font-size: 1.2rem;
+    color: white;
+}
+
+
+.msgDivLeft {
+    float: left;
+}
+
+.msgDivRight>p {
+    font-size: 5px;
+    color: gray;
+}
+
+.header {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header h2 {
+    color: white;
+    margin-left: 10px;
+}
+
+.msgDivmid {
+    display: block;
+    margin: 8px 0;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: gray;
+    color: white;
+}
