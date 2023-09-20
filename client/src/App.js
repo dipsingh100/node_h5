@@ -3,7 +3,7 @@ import { io } from "socket.io-client"
 import "./css/chat.css"
 import profile from "./profile.svg"
 
-const socket = io("http://localhost:8000")
+const socket = io("https://groupchat-i706.onrender.com")
 const App = () => {
   const [message, setMessage] = useState("")
   const [name, setName] = useState("")
