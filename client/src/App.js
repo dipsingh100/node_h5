@@ -27,7 +27,7 @@ const App = () => {
         ReceiveMessage(GroupMessage.Message, GroupMessage.userName)
       }
     })
-  }, [])
+  }, [name])
 
   const sendMessage = (message) => {
     const messageCont = document.createElement("div")
