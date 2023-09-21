@@ -4,9 +4,11 @@ import "./css/chat.css"
 import profile from "./profile.svg"
 
 const socket = io("https://groupchat-i706.onrender.com")
+// const socket = io("http://localhost:8000")
 const App = () => {
   const [message, setMessage] = useState("")
   const [name, setName] = useState("")
+
   useEffect(() => {
     do {
       var res = prompt("Enter Your Name ?")
@@ -15,9 +17,31 @@ const App = () => {
 
     alert("You have Joined the Group EA23")
     socket.emit("JOIN_GROUP", { GroupName: "EA23", userName: res })
-  }, [])
 
-  useEffect(() => {
+    const ReceiveMessage = (message, sender) => {
+      if (sender !== name) {
+        const messageCont = document.createElement("div")
+        const messageDiv = document.createElement("div")
+        messageCont.className = "flex-l"
+        messageDiv.className = "msgDivLeft"
+
+        const senderName = document.createElement("p")
+        senderName.textContent = sender
+
+        const messageText = document.createElement("p");
+        messageText.textContent = message;
+
+        messageDiv.appendChild(senderName)
+        messageDiv.appendChild(messageText)
+        messageCont.appendChild(messageDiv)
+
+        const chatBox = document.getElementsByClassName("chatBox")[0]
+        chatBox.insertBefore(messageCont, chatBox.firstChild)
+        chatBox.scrollTop = 0
+        socket.emit("SENDINGROUP", { Message: message, userName: name })
+      }
+    }
+
     socket.on("JOIN_MESSAGE", (GroupMessage) => {
       joinMEssage(GroupMessage)
     })
@@ -63,29 +87,6 @@ const App = () => {
 
   }
 
-  const ReceiveMessage = (message, sender) => {
-    if (sender !== name) {
-      const messageCont = document.createElement("div")
-      const messageDiv = document.createElement("div")
-      messageCont.className = "flex-l"
-      messageDiv.className = "msgDivLeft"
-
-      const senderName = document.createElement("p")
-      senderName.textContent = sender
-
-      const messageText = document.createElement("p");
-      messageText.textContent = message;
-
-      messageDiv.appendChild(senderName)
-      messageDiv.appendChild(messageText)
-      messageCont.appendChild(messageDiv)
-
-      const chatBox = document.getElementsByClassName("chatBox")[0]
-      chatBox.insertBefore(messageCont, chatBox.firstChild)
-      chatBox.scrollTop = 0
-      socket.emit("SENDINGROUP", { Message: message, userName: name })
-    }
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
